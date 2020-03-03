@@ -1,0 +1,92 @@
+.main-section {
+	margin: 0 auto;
+	margin-top: 130px;
+	padding: 0;
+}
+
+.modal-content {
+	background-color: #434e5a;
+	padding: 0 18px;
+	border-radius: 10px;
+}
+
+.user-img img {
+	height: 120px;
+	width: 120px;
+}
+
+.user-img {
+	
+	margin-bottom: 45px;
+}
+
+.form-group {
+	margin-bottom: 25px;
+}
+
+.form-group input{
+	border-radius: 5px;
+	border:0;
+	font-size: 18px;
+	letter-spacing: 2px;
+	color: white;
+}
+
+.form-input button{
+	width: 40%;
+	margin: 5px 0 25px;
+}
+
+
+.btn-success{
+	background-color: #1c6288;
+	font-size: 19px;
+	border-radius: 5px;
+	padding: 7px 14px;
+	border: 1px solid #daf1ff;
+}
+
+.btn-success:hover{
+	background-color: #13445e;
+	border: 1px solid #daf1ff;
+}
+
+.forgot{
+	padding: 5px 9 25px;
+}
+
+.forgot a{
+	color: #daf1ff;
+}
+
+
+#sidebar-wrapper {
+  margin-left:10px;
+  width: 200px;
+  margin-bottom: 15px;
+ 
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+.ativo{
+	color:#FFF;
+	background-color: #343a40;
+}
+
+.container_admin{
+	margin-top:80px;
+}
+
+
+.cards-gerenciais{
+	margin-left: 30px;
+	margin-right: 15px;
+}
