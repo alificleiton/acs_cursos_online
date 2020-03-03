@@ -63,16 +63,18 @@ include_once("conexao.php");
 
       <div class="row">
 
-        <div class="col-md-12 col-lg-9 col-sm-12">
+        <div class="col-sm-12 col-md-9 col-lg-9">
 
+          <!-- DESCRIÇÃO DO CURSO -->
           <div class="row">
+              <!-- IMAGEM -->
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                  <img src="imagens/curso.jpg" width="100%">
+              </div>
+              <!-- CONTEÚDO DO CURSO -->
+              <div class="col-sm-12 col-md-8 col-lg-8">
 
-            <div class="col-md-6 col-lg-5 col-sm-12 mb-1">
-              <img src="imagens/curso.jpg" width="100%">
-            </div>
-
-            <div class="col-md-6 col-lg-7 col-sm-12">
-              <p class="descricao"> <? echo $desc_longa; ?></p>
+                <p class="descricao"> <? echo $desc_longa; ?></p>
 
                 <div class="row mt-2">
                   
@@ -90,7 +92,6 @@ include_once("conexao.php");
 
                 </div>
 
-
                 <div class="row mt-1 mb-3">
                   
                    <div class="col-md-7 col-lg-6 col-sm-12">
@@ -107,20 +108,16 @@ include_once("conexao.php");
 
                 </div>
 
-            </div>
-
-
-            <div class="col-md-6 col-lg-7 col-sm-12 mt-3">
-            </div>
+              </div>
 
 
           </div>
 
-          <div class="col-md-12 col-lg-9 col-sm-12">
-
-            <h5><small> Cursos Relacionados </small> </h5>
-
-            <hr>
+          <!-- CURSOS RELACIONADOS -->
+          <div class="row">
+            <div class="container mt-3 mb-3">
+              <h5><small> Cursos Relacionados </small></h5>
+            </div>
 
             <section class="bg-light page-section">
               <div class="container">
@@ -137,6 +134,7 @@ include_once("conexao.php");
                           $desc_rapida = $res["desc_rapida"];
                           $imagem = $res["imagem"];  
                           $valor = $res["valor"]; 
+                          $id = $res["id"];
                           
 
                           $nome_novo = strtolower( preg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")) );
@@ -170,9 +168,11 @@ include_once("conexao.php");
 
           </div>
 
-          <div class="col-md-12 col-lg-7 col-sm-12">
+          <!-- AVALIAÇÕES -->
+          <div class="row">
 
-            <h5><small> Avaliações </small> </h5>
+            <div class="container mt-3 mb-4">
+              <h5><small> Avaliações </small> </h5>
 
             <hr>
 
@@ -215,17 +215,17 @@ include_once("conexao.php");
                     }
 
                     ?>
-
+            </div>
           </div>
 
         </div>
 
-        <div class="col-md-12 col-lg-3 col-sm-12">
-
-         
-            <small>
+        <div class="col-md-12 col-md-3 col-lg-3">
+           <small>
 
               <?php
+
+                $id = $_GET['id'];
 
                 $query_aulas = "select * from aulas where curso = '$id'";
                 $result_aulas = mysqli_query($conexao, $query_aulas);
@@ -248,15 +248,15 @@ include_once("conexao.php");
               <? } ?>
            
             </small>
-
         </div>
-      
+
       </div>
 
   </div>
 
-  <? }  ?>
 
+
+<? } ?>
 
 
 <? include_once "rodape.php" ?>

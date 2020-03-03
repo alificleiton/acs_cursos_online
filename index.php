@@ -104,11 +104,16 @@
               $nome = $res["nome"];
               $desc_rapida = $res["desc_rapida"];
               $imagem = $res["imagem"];  
+              $id = $res["id"];
+
+              $nome_novo = strtolower( preg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")) );
+
+              $nome_sem_espaco = preg_replace('/[ -]+/' , '-' , $nome_novo);
           ?>
 
 
               <div class="col-md-4 col-sm-6 cursos-item">
-              <a class="cursos-link" href="#">
+              <a class="cursos-link" href="curso.php?curso=<?php echo $nome_sem_espaco; ?>&id=<?php echo $id; ?>">
                 <div class="cursos-hover">
                   <div class="cursos-hover-content">
                     <i class="fas fa-plus fa-3x"></i>
