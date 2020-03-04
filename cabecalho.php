@@ -31,7 +31,7 @@
       
       <nav class = "navbar navbar-expand-md navbar-light bg-dark fixed-top navbar-transparente">
         <div class="container">
-           <a href="index.php" class="navbar-brand">
+           <a href="index.php" class="navbar-brand" >
               <img src="imagens/EEEE.png" width="200">
            </a>
 

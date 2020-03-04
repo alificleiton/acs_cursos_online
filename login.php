@@ -4,6 +4,8 @@
   include_once "conexao.php";
   session_start();
 
+  $id_curso = @$_GET['curso'];
+
 ?>
 
     <div class="modal-dialog text-center">
@@ -14,7 +16,7 @@
             </div>
 
             <div class="col-12 form-input">
-              <form action="autenticar.php" method="post">
+              <form action="autenticar.php?curso=<? echo $id_curso;?>" method="post">
                 <div class="form-group">
                   <input type="email" name="usuario" class="form-control text-dark" placeholder="Email" required>
                 </div>
@@ -28,7 +30,7 @@
             </div>
 
             <div class="col-12 forgot">
-              <div class="d-flex justify-content-center links"> Não possui cadastro? <a href="#" data-toggle="modal" data-target="#modalExemplo" class="ml-2"> Cadastre-se</a>
+              <div class="d-flex justify-content-center links"> Não possui cadastro? <a href="login.php?curso=0&acao=cadastro"  class="ml-2"> Cadastre-se</a>
               </div>
               <div class="d-flex justify-content-center links">  <a href="#" class="ml-2">Recuperar senha</a>
               </div>
@@ -44,7 +46,14 @@
         </div>
     </div>
 
+<!-- MODAL PAGAMENTO -->
+<?php 
+  if(@$id_curso != '' and @$_GET['acao'] != ''){
+    
+    
 
+    
+?>
 
     <!-- Modal -->
       <div id="modalExemplo" class="modal fade" role="dialog">
@@ -79,12 +88,16 @@
                  <input type="text" class="form-control mr-2 text-dark" name="senha" placeholder="Senha" required>
               </div>
 
+             
+
                <div class="form-group">
                 <label for="fornecedor">Nível</label>
                   <select class="form-control mr-2 text-dark" id="category" name="nivel">
                                                             
                     <option value="Aluno">Aluno</option> 
-                    <option value="Professor">Professor</option> 
+                    <? if($id_curso == 0){ ?>
+                      <option value="Professor">Professor</option> 
+                    <? } ?>
                        
                </select>
               </div>
@@ -104,7 +117,9 @@
             </div>
           </div>
         </div>
-      </div>    
+      </div>   
+
+  <? } ?> 
 
 <?php
   if(isset($_SESSION['nao_autenticado'])){
@@ -180,7 +195,17 @@
       echo "<script language='javascript'>window.alert('Ocorreu um erro ao Salvar!'); </script>";
     }else{
       echo "<script language='javascript'>window.alert('Salvo com Sucesso!'); </script>";
-      echo "<script language='javascript'>window.location='login.php?acao=usuarios'; </script>";
+
+      if($id_curso == 0){
+        echo "<script language='javascript'>window.location='login.php'; </script>";
+      }else{
+
+        echo "<script language='javascript'>window.location='login.php?curso=$id_curso'; </script>";
+
+      }
+
+
+      
 
     }
     
@@ -204,3 +229,6 @@
       $('#cpf').mask('000.000.000-00');
       });
 </script>
+
+
+<script> $("#modalExemplo").modal("show"); </script>

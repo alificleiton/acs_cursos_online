@@ -1,6 +1,7 @@
 <?php
     include_once('conexao.php');
     session_start();
+    $id_curso = @$_GET['curso'];
 ?>
 
 
@@ -24,8 +25,6 @@
 
 	if($linha > 0){
 
-
-
 		$_SESSION['usuario'] = $usuario;
 		$_SESSION['nome'] = $dado['nome'];
 		$_SESSION['nivel'] = $dado['nivel'];
@@ -41,8 +40,14 @@
 			exit();
 		}
 
+
+
 		if($_SESSION['nivel'] == 'Aluno'){
-			header('Location:painel_aluno/painel_aluno.php');
+			if($id_curso == 0){
+				header('Location:painel_aluno/painel_aluno.php');
+			}else{
+				echo "<script language='javascript'>window.location='curso.php?acao=pagamento&id=$id_curso'; </script>";
+			}
 			exit();
 		}
 

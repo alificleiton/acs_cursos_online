@@ -1,12 +1,15 @@
 <?php 
 include_once("cabecalho.php");
 include_once("conexao.php");
+session_start();
 ?>
 
 
   <?php 
 
     $id = $_GET['id'];
+    $nivel = @$_SESSION['nivel'];
+    $cpf = @$_SESSION['cpf'];
 
     $query = "select * from cursos where id = $id";
     $result = mysqli_query($conexao, $query);
@@ -21,6 +24,7 @@ include_once("conexao.php");
       $professor = $res["professor"];
       $categoria = $res["categoria"];
       $aulas = $res["aulas"];
+      $nome_curso = $res["nome"];
 
       $nome_novo = strtolower( preg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")) );
 
@@ -49,7 +53,16 @@ include_once("conexao.php");
 
         <h5>Curso de <? echo $nome; ?> - <small><? echo $desc_rapida; ?></small></h5>
 
-         <a href="#"><span class="valor"><i class="mt-3 fas fa-shopping-cart mr-1"></i>Matricule-se R$  <? echo $valor; ?></span></a>
+        <!-- VERIFICAR SE O ALUNO ESTA LOGADO -->
+
+        
+
+
+          <a href="curso.php?acao=pagamento&id=<? echo $id; ?>"><span class="valor"><i class="mt-3 fas fa-shopping-cart mr-1"></i>Matricule-se R$  <? echo $valor; ?></span></a>
+
+        
+
+         
 
       </div>
 
@@ -69,7 +82,7 @@ include_once("conexao.php");
           <div class="row">
               <!-- IMAGEM -->
               <div class="col-sm-12 col-md-4 col-lg-4">
-                  <img src="imagens/curso.jpg" width="100%">
+                  <img src="imagens/cursos/<?echo $imagem; ?>" width="100%">
               </div>
               <!-- CONTEÚDO DO CURSO -->
               <div class="col-sm-12 col-md-8 col-lg-8">
@@ -125,6 +138,7 @@ include_once("conexao.php");
 
 
                   <?php 
+                        $id = $_GET['id'];
 
                         $query = "select * from cursos where categoria = '$categoria' order by id";
                         $result = mysqli_query($conexao, $query);
@@ -135,15 +149,16 @@ include_once("conexao.php");
                           $imagem = $res["imagem"];  
                           $valor = $res["valor"]; 
                           $id = $res["id"];
+
                           
 
                           $nome_novo = strtolower( preg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")) );
 
-                          $nome_sem_espaco = preg_replace('/[ -]+/' , '-' , $nome_novo);
+                          $nome_sem_espaco_2 = preg_replace('/[ -]+/' , '-' , $nome_novo);
                       ?>
 
                     <div class="col-md-3 col-sm-6 cursos-item">
-                      <a class="cursos-link" href='curso.php?curso=<?php echo $nome; ?>&id=<?php echo $id; ?>'>
+                      <a class="cursos-link" href='curso.php?curso=<?php echo $nome_sem_espaco_2; ?>&id=<?php echo $id; ?>'>
                         <div class="cursos-hover">
                           <div class="cursos-hover-content">
                             <i class="fas fa-plus fa-3x"></i>
@@ -178,6 +193,8 @@ include_once("conexao.php");
 
             <?php  
 
+                    $id = $_GET['id'];
+                   
                     $query_ava = "select * from avaliacoes where curso = '$id' order by id asc ";
 
                     $result_ava = mysqli_query($conexao, $query_ava);
@@ -187,7 +204,7 @@ include_once("conexao.php");
                     if($linha_ava > 0){
 
                       while($res_ava = mysqli_fetch_array($result_ava)){
-                        $id = $res_ava["id"];
+                        $id_ava = $res_ava["id"];
                         $nota = $res_ava["nota"];
                         $comentario = $res_ava["comentario"];
                         $aluno = $res_ava["aluno"];
@@ -204,7 +221,71 @@ include_once("conexao.php");
 
                         ?>
                         <div class="mt-3">
-                          <span> <img class="rounded-circle z-depth-0" src="imagens/perfil/<?php echo $img_aluno; ?>" width="25" height="25"> - <?php echo $nome; ?> <span class="ml-4"><?php echo $data2; ?></span>  </span><br>
+                          <span> <img class="rounded-circle z-depth-0" src="imagens/perfil/<?php echo $img_aluno; ?>" width="25" height="25"> - <?php echo $nome; ?> <span class="ml-4"><?php echo $data2; ?></span>  </span>
+                          <? if($nota == 5){ ?>
+
+
+
+                          <span class="ml-4"><i class="fas fa-star text-warning"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"></i></i></i></i></i></span>
+
+                          <span class="ml-1 text-muted"><i>-  Excelente </i></span>
+
+                          <? } ?>
+
+                          <? if($nota == 4){ ?>
+
+
+
+                          <span class="ml-4"><i class="fas fa-star text-warning"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"></i></i></i></i></span>
+
+                          <span class="ml-1 text-muted"><i>-  Muito Bom </i></span>
+
+                          <? } ?>
+                          <? if($nota == 3){ ?>
+
+
+
+                          <span class="ml-4"><i class="fas fa-star text-warning"><i class="fas fa-star"><i class="fas fa-star"></i></i></i></span>
+
+                          <span class="ml-1 text-muted"><i>-  Bom </i></span>
+
+                          <? } ?>
+
+                          
+
+
+
+                          <? if($nota == 2){ ?>
+
+
+
+                          <span class="ml-4"><i class="fas fa-star text-warning"><i class="fas fa-star"></i></i></span>
+
+                          <span class="ml-1 text-muted"><i>-  Ruim </i></span>
+
+                          <? } ?>
+
+                          <? if($nota == 1){ ?>
+
+
+
+                          <span class="ml-4"><i class="fas fa-star text-warning"></i></span>
+
+                          <span class="ml-1 text-muted"><i>-  Muito Ruim </i></span>
+
+                          <? } ?>
+
+                          <?php if(@$_SESSION['nivel'] === 'Administrador' ){
+
+                            $nivel_usuario_2 = @$_SESSION['nivel'];
+
+                          ?>
+
+                            <span class="ml-4 text-danger"><a href="curso.php?curso=<?php echo $nome_sem_espaco_2; ?>&id=<?php echo $id; ?>&func=excluir_ava&id_ava=<?php echo $id_ava ?>"><span class="ml-4 text-danger"><i class="far fa-trash-alt"></i></span></a></span>
+
+                           <? } ?>
+
+                          <br>
                          <span> <?php echo $comentario ?> </span>
                        </div>
 
@@ -239,7 +320,7 @@ include_once("conexao.php");
 
                   <? if($num_aula <= 2){ ?>
              
-                      <i class="fas fa-video mr-1"></i><a class="text-dark" href='curso.php?curso=<?php echo $nome_sem_espaco; ?>&id=<?php echo $id; ?>&acao=aula&aula=<? echo $num_aula; ?>'>Aula <? echo $num_aula; ?> - <? echo $nome; ?></a><br>
+                      <i class="fas fa-video mr-1"></i><a class="text-dark" href='curso.php?curso=<?php echo $nome_sem_espaco_2; ?>&id=<?php echo $id; ?>&acao=aula&aula=<? echo $num_aula; ?>'>Aula <? echo $num_aula; ?> - <? echo $nome; ?></a><br>
                   <? }else{ ?>
 
                       <i class="fas fa-video mr-1"></i>Aula <? echo $num_aula; ?> - <? echo $nome; ?><br>
@@ -306,6 +387,28 @@ include_once("conexao.php");
 <script> $("#modalAula").modal("show"); </script>
 
 
+<!--EXCLUIR A AVALIAÇÃO -->
+<?php 
+  if(@$_GET['func'] == 'excluir_ava'){
+    $id_ava = $_GET['id_ava'];
+    echo "<script language='javascript'>window.alert('Entrou no Excluir!'); </script>";
+    $query = "DELETE from avaliacoes where id = '$id_ava'";
+
+    $result = mysqli_query($conexao, $query);
+
+    if($result == ''){
+      echo "<script language='javascript'>window.alert('Ocorreu um erro ao Excluir!'); </script>";
+    }else{
+     
+     echo "<script language='javascript'>window.location='curso.php?curso=$nome_sem_espaco&id=$id'; </script>";
+
+    }
+ 
+ }
+                         
+?>
+
+
 <?php 
 
       if(isset($_POST['fecharModal'])){
@@ -316,3 +419,70 @@ include_once("conexao.php");
 }
 
 ?>
+
+
+<!-- MODAL PAGAMENTO -->
+<?php 
+  if(@$_GET['acao'] == 'pagamento'){
+    
+    $id_curso = $_GET['id'];
+
+    
+?>
+
+  <!-- Modal Pagamento -->
+      <div id="modalPagamento" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+         <!-- Modal content-->
+          <div class="modal-content bg-light">
+            <form method="POST" action="">
+              <div class="modal-header">
+                <h5 class="modal-title">Pagamento Curso de <? echo $nome_curso; ?></h5>
+                <button type="submit" class="close" name="fecharModal">&times;</button>
+              </div>
+            </form>
+            <div class="modal-body">
+
+              <? if($nivel == ''){?>
+
+              <p class="text-muted"> Você precisa estar logado no site para efetuar a matrícua no curso, faça seu login <a href="login.php?curso=<? echo $id_curso; ?>" target="_blank" class="text-danger">aqui</a> ou caso não tenha cadastro cadastre-se <a href="login.php?curso=<? echo $id_curso; ?>&acao=loginpgto" target="_blank" class="text-danger">aqui!!!</p>
+
+              <? }else{ ?>
+
+                <?php
+
+                  //iniciando a matricula com status de aguardando pagamento
+
+
+                  $query_verificar = "SELECT * from matriculas where id_curso = '$id_curso' and aluno = '$cpf' ";
+                  $result_verificar = mysqli_query($conexao, $query_verificar);
+                  $row_verificar = mysqli_num_rows($result_verificar);
+
+                  if($row_verificar == 0){
+
+                    $query_mat = "INSERT INTO matriculas (id_curso, aluno, professor, aulas_concluidas, valor, data,status) values ('$id_curso', '$cpf', '$professor', '1', '$valor', curDate(), 'Aguardando')";
+
+                     mysqli_query($conexao, $query_mat);
+                     
+
+                   }else{ ?>
+
+                    <p class="text-muted">Você já possui este curso, entre no seu painel, clique aqui para acompanhar o curso</p>
+
+                  <? } ?>
+
+                  
+                <? } ?>
+              
+             
+            </div>
+                   
+            
+            </div>
+          </div>
+        </div>
+      </div>    
+
+<? } ?>
+
+<script> $("#modalPagamento").modal("show"); </script>
