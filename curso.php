@@ -449,6 +449,7 @@ session_start();
 
               <? }else{ ?>
 
+
                 <?php
 
                   //iniciando a matricula com status de aguardando pagamento
@@ -457,6 +458,9 @@ session_start();
                   $query_verificar = "SELECT * from matriculas where id_curso = '$id_curso' and aluno = '$cpf' ";
                   $result_verificar = mysqli_query($conexao, $query_verificar);
                   $row_verificar = mysqli_num_rows($result_verificar);
+                  $res_cpf = mysqli_fetch_array($result_verificar);
+                  $aulas_concluidas = $res_cpf['aulas_concluidas'];
+
 
                   if($row_verificar == 0){
 
@@ -465,9 +469,21 @@ session_start();
                      mysqli_query($conexao, $query_mat);
                      
 
-                   }else{ ?>
+                   } ?>
 
-                    <p class="text-muted">Você já possui este curso, entre no seu painel, clique aqui para acompanhar o curso</p>
+                  <?php
+
+                    $query_verificar_status = "SELECT * from matriculas where id_curso = '$id_curso' and aluno = '$cpf' and status = 'Matriculado' ";
+                    $result_verificar_status = mysqli_query($conexao, $query_verificar_status);
+                    $row_verificar_status = mysqli_num_rows($result_verificar_status);
+                    if($row_verificar_status == 0){ ?>
+
+                      Formas de pagamento
+
+
+                    <? }else{ ?>
+
+                    <p target="_blank" class="text-muted">Você já possui este curso, entre no seu painel, clique <a href="painel_aluno/painel_aluno.php?acao=cursos&func=aulas&id=<? echo $id_curso;?>&aulas_concluidas=<? echo $aulas_concluidas;?>" target="_blank" class="text-danger"> aqui</a>para acompanhar o curso</p>
 
                   <? } ?>
 

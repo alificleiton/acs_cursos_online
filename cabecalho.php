@@ -54,22 +54,13 @@
                   <li class="nav-item">
                     <a href="index.php#servicos" class="nav-link">QUEM SOMOS</a>
                   </li>
-                  <li class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle " data-toggle="dropdown" id="navDrop">CURSOS</a>
-                    <div class="dropdown-menu ">
-                      <a class="dropdown-item" href="cursos.php">EXCEL</a>
-                      <a class="dropdown-item" href="cursos.php">INGLÊS</a>
-                    </div>
+                  <li class="nav-item">
+                    <a href="cursos.php" class="nav-link " >CURSOS</a>
                   </li>
 
                   <li class="nav-item divisor">
                     
                   </li>
-
-                  <li class="nav-item">
-                    <a href="index.php#servicos" class="nav-link">INSCREVER-SE</a>
-                  </li>
-
 
                   <?php
 

@@ -3,7 +3,9 @@
   include_once("conexao.php");
 ?>
 
-    <section id="home" class="d-flex"><!-- Inicio home -->
+
+    <!-- DEFINIÇÃO DO CARROSEL  -->
+    <section id="home" class="d-flex"><!-- Inicio home -------------------------------------------------------------->
       <div class="container align-self-center">
         <div class="row">
           <div class="col-md-12 capa">
@@ -36,103 +38,54 @@
           </div>
         </div>
       </div>
-    </section><!-- Fim home -->
+    </section><!-- Fim home --------------------------------------------------------------------------------------->
 
-<!--
+
+
+    <!-- DEFINIÇÃO DOS ÚLTIMOS CURSOS APROVADOS------------------------------------------------------------------------  -->
     <section id="servicos" class="caixa">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase"> Formações</h2>
-            <h4 class="section-subheading text-muted"> Nossas principais formações</h4>
-          </div>
-        </div>
-
-          <div class="row">
-              <div class="col-md-6 text-center">
-                <span class="fa-stack fa-4x">
-                    <i class="fas fa-laptop fa-stack-1x text-muted"></i>
-                </span>
-                <h4 class="text-center text-muted"> EXCEL </h4>
-                <p class="text-muted"> Curso completo do básico ao avançado.</p>
-              </div>
-          
-          
-            <div class="col-md-6 text-center">
-                  <span class="fa-stack fa-4x">
-                      <i class="fas fa-book-reader fa-stack-1x text-muted"></i>
-                  </span>
-                  <h4 class="text-center text-muted" > INGLÊS </h4>
-                  <p class="text-muted"> Curso completo do básico ao avançado.</p>
-                
-            </div>
-
-          </div>
-
-      </div>
-    </section>
--->
-
-    <section id="servicos" class="caixa">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
+          <div class="col-lg-12 text-center mb-3">
             <h2 class="section-heading text-uppercase"> Últimos Cursos</h2>
             <h4 class="section-subheading text-muted"><a class="text-muted" href="cursos.php"> Veja a lista completa</a></h4>
           </div>
         </div>
         <div class="row">
-
           <?php 
-
+            //VERIFICA SE FOI PESQUISADO O NOME DO CURSO
             if(isset($_GET['nome']) and $_GET['nome'] != ''){
-
               $nome = '%' .$_GET['nome'] . '%';
-
               $query = "select * from cursos where status = 'Aprovado' and ( nome LIKE '$nome' or desc_rapida LIKE '$nome') order by id desc limit 6";
-
             }else{
-
               $query = "select * from cursos where status = 'Aprovado' order by id desc limit 6";
-
             }
-
-            
+            //conexão com o banco para preenchimento dos dados 
             $result = mysqli_query($conexao, $query);
-
-            while($res = mysqli_fetch_array($result)){
+            while($res = mysqli_fetch_array($result)){//-------------------------------------------------------------
               $nome = $res["nome"];
               $desc_rapida = $res["desc_rapida"];
               $imagem = $res["imagem"];  
               $id = $res["id"];
-
               $nome_novo = strtolower( preg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")) );
-
               $nome_sem_espaco = preg_replace('/[ -]+/' , '-' , $nome_novo);
           ?>
-
-
-              <div class="col-md-4 col-sm-6 cursos-item">
-              <a class="cursos-link" href="curso.php?curso=<?php echo $nome_sem_espaco; ?>&id=<?php echo $id; ?>">
-                <div class="cursos-hover">
-                  <div class="cursos-hover-content">
-                    <i class="fas fa-plus fa-3x"></i>
-                  </div>
-                </div>
-                <img class="img-fluid" src="imagens/cursos/<?php echo $imagem; ?>" width="350" alt="">
-              </a>
-              <div class="cursos-caption">
-                <h4><?php echo $nome; ?></h4>
-                <p class="text-muted"><?php echo $desc_rapida; ?></p>
-              </div>
+          <div class="col-md-4 col-sm-6 cursos-item">
+            <a class="cursos-link" href="curso.php?curso=<?php echo $nome_sem_espaco; ?>&id=<?php echo $id; ?>">
+              <img class="img-fluid" src="imagens/cursos/<?php echo $imagem; ?>" width="250" alt="">
+            </a>
+            <div class="cursos-caption">
+              <h4><?php echo $nome; ?></h4>
+              <p class="text-muted"><?php echo $desc_rapida; ?></p>
             </div>
-
-          <?php } ?>
-
+          </div>
+            <? } ?><!-- FECHAMENTO WHILE-------------------------------------------------------------------------------->
         </div>
       </div>
-    </section>
+    </section><!-- ------------------------------------------------------------------------------------------------  -->
 
+
+    <!-- DEFINIÇÃO DE QUEM SOMOS  INSERÇÃO DA IMAGEM QUE SOME QUANDO FICA MOBILE ------------------------------------ -->
     <section id="recursos" class="caixa">
       <div class="container">
         <div class="row">
@@ -141,85 +94,63 @@
             <h4 class="section-subheading"> Conheça o ACS Cursos Online</h4>
           </div>
         </div>
-
-          <div class="row">
-              <div class="col-md-6 text-center">
+        <div class="row">
+          <div class="col-md-6 text-center">
                 
-                <p class="py-4 text-light"> Plataforma de cursos online , que visa a portabilidade, facilidade, acessibilidade de forma a garantir conteúdos de qualidade para seu dia a dia, onde você poderá estudar quando e onde quiser, com preços acessíveis e aulas didáticas.</p>
-              </div>
-          
-          
-            <div class="col-md-6 text-center">
-                  
-                  <p class="text-muted"> IMAGEM.</p>
-                
-            </div>
-
+            <p class="py-4 text-light"> Plataforma de cursos online , que visa a portabilidade, facilidade, acessibilidade de forma a garantir conteúdos de qualidade para seu dia a dia, onde você poderá estudar quando e onde quiser, com preços acessíveis e aulas didáticas.</p>
           </div>
-
+          <div class="col-md-6 text-center">
+            <p class="text-muted"> IMAGEM.</p>
+          </div>
+        </div>
       </div>
-    </section>
+    </section><!-- __---------------------------------------------------- ------------------------------------ -->
 
     
     
   
-
+<!-- DEFINIÇÃO DE QUEM SOMOS  INSERÇÃO DA IMAGEM QUE SOME QUANDO FICA MOBILE ------------------------------------ -->
     <section id="servicos" class="caixa">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center my-5">
             <h2 class= "display-4"><i class="fa fa-paper-plane text-primary"  aria-hidden="true"></i>Inscreva-se</h2>
           </div>
-          
         </div>
-       
-
-            <form action=""  method="POST" name="formulario">
-              
-                <div class="py-3 col-md-6 offset-md-3">
-                      <label for="inputNome">Seu nome:</label>
-                      <input type="text" class="form-control" id="inputNome" placeholder="Nome">
-                </div>
-
-                <div class="py-3 col-md-6 offset-md-3">
-                  <label for="inputTelefone">Telefone:</label>
-                  <input type="text" class="form-control" id="inputTelefone" placeholder="Telefone">
-                </div>
-
-                <div class="py-3 col-md-6 offset-md-3">
-                  <label for="inputTelefone">Email:</label>
-                  <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-                </div>
-
-                <div class="py-3 col-md-6 offset-md-3">
-                  <label for="inputTelefone">Confirmar Email:</label>
-                  <input type="text" class="form-control" id="inputConfEmail" placeholder="Confirmar Email">
-                </div>
-
-                <div class="py-3 col-md-6 offset-md-3">
-                  <label for="inputTelefone">Senha:</label>
-                  <input type="password" class="form-control" id="inputSenha" placeholder="Senha">
-                </div>
-
-                <div class="py-3 col-md-6 offset-md-3">
-                  <label for="inputTelefone">Confirmar Senha:</label>
-                  <input type="password" class="form-control" id="inputSenha" placeholder="Confirmar Senha">
-                </div>
-
-                <div class="py-3 col-md-6 offset-md-3">
-                  <button type="submit" class="btn btn primary" >ENVIAR</button>
-                </div>
-
-                
-
-             
-            </form>
-          
+        <form action=""  method="POST" name="formulario">    
+          <div class="py-3 col-md-6 offset-md-3">
+            <label for="inputNome">Seu nome:</label>
+            <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+          </div>
+          <div class="py-3 col-md-6 offset-md-3">
+            <label for="inputTelefone">Telefone:</label>
+            <input type="text" class="form-control" id="inputTelefone" placeholder="Telefone">
+          </div>
+          <div class="py-3 col-md-6 offset-md-3">
+            <label for="inputTelefone">Email:</label>
+            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+          </div>
+          <div class="py-3 col-md-6 offset-md-3">
+            <label for="inputTelefone">Confirmar Email:</label>
+            <input type="text" class="form-control" id="inputConfEmail" placeholder="Confirmar Email">
+          </div>
+          <div class="py-3 col-md-6 offset-md-3">
+            <label for="inputTelefone">Senha:</label>
+            <input type="password" class="form-control" id="inputSenha" placeholder="Senha">
+          </div>
+          <div class="py-3 col-md-6 offset-md-3">
+            <label for="inputTelefone">Confirmar Senha:</label>
+            <input type="password" class="form-control" id="inputSenha" placeholder="Confirmar Senha">
+          </div>
+          <div class="py-3 col-md-6 offset-md-3">
+            <button type="submit" class="btn btn primary" >ENVIAR</button>
+          </div>
+        </form>       
       </div>
-    </section>
+    </section><!----------------------------------------------------------------------------------------------------->
 
 
-    <!-- Contatos -->
+    <!-- Contatos --------------------------------------------------------------------------------------------------->
   <section class="page-section" id="contatos">
     <div class="container">
       <div class="row">
@@ -243,7 +174,6 @@
                 </div>
                 <div class="form-group">
                   <input class="form-control" id="telefone" type="tel" placeholder="Seu Telefone">
-                 
                 </div>
               </div>
               <div class="col-md-6 py-4">
@@ -262,7 +192,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section><!----------------------------------------------------------------------------------------------------->
 
 
 <? include_once "rodape.php" ?>
