@@ -473,12 +473,34 @@ session_start();
 
                   <?php
 
-                    $query_verificar_status = "SELECT * from matriculas where id_curso = '$id_curso' and aluno = '$cpf' and status = 'Matriculado' ";
-                    $result_verificar_status = mysqli_query($conexao, $query_verificar_status);
-                    $row_verificar_status = mysqli_num_rows($result_verificar_status);
-                    if($row_verificar_status == 0){ ?>
+                    //VERIFICAR SE O ALUNO ESTÁ MATRICULADO NO CURSO E SUA MATRICULA ESTÁ APROVADA
+                $query_verificar_status = "SELECT * from matriculas where id_curso = '$id_curso' and aluno = '$cpf' and status = 'Matriculado' ";
+                $result_verificar_status = mysqli_query($conexao, $query_verificar_status);
 
-                      Formas de pagamento
+                              
+                $row_verificar_status = mysqli_num_rows($result_verificar_status);
+
+                  if($row_verificar_status == 0){   ?>
+
+
+                    <?php 
+
+                      //RECUPERAR O ID DA MATRICULA CRIADA
+                      $query_mat = "SELECT * from matriculas where id_curso = '$id_curso' and aluno = '$cpf' ";
+                      $result_mat = mysqli_query($conexao, $query_mat);
+
+                      $res_mat = mysqli_fetch_array($result_mat);
+                   
+                      $id_mat = $res_mat['id'];
+                      $valor_mat = $res_mat['valor'];
+
+                    ?>
+
+                      <a title="PagSeguro - Acesso Imediato ao Curso" target="_blank" href="pagseguro/checkout.php?codigo=<?php echo $id_mat; ?>&curso=<?php echo $id_curso; ?>"><img src="imagens/pagamentos/pagseguro.png" width="200"></a>
+                      <span class="text-muted"><i><small><br>Liberação Imediata no Cartão <br>
+                      Boleto pode demorar até 24 Horas.</small></i></span>
+
+
 
 
                     <? }else{ ?>

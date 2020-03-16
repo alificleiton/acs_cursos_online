@@ -383,7 +383,7 @@
                       $nome = $res_aluno['nome'];
                       ?>
                       <div class="mt-3">
-                        <small><span> <img class="rounded-circle z-depth-0" src="../img/perfil/<?php echo $img_aluno; ?>" width="25" height="25"> - <?php echo $nome; ?> <span class="ml-4"><?php echo $data2; ?></span> <span class="ml-2"><?php echo $respostas; ?> Respostas</span> </span><br>
+                        <small><span> <img class="rounded-circle z-depth-0" src="../imagens/perfil/<?php echo $img_aluno; ?>" width="25" height="25"> - <?php echo $nome; ?> <span class="ml-4"><?php echo $data2; ?></span> <span class="ml-2"><?php echo $respostas; ?> Respostas</span> </span><br>
                        <span> <a class="text-dark" href="painel_aluno.php?acao=cursos&func=responder&id=<?php echo $id; ?>&id_pergunta=<?php echo $id_pergunta; ?>&aulas_concluidas=<?php echo $aulas_concluidas; ?>">Aula <?php echo $aula ?> - <?php echo $pergunta ?></a> </span></small>
                      </div>
 
