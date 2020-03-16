@@ -244,16 +244,31 @@
 <!--ABRIR AULAS -->
 <?php 
   if(@$_GET['func'] == 'aulas'){
-    $id = $_GET['id'];
-    $aulas_concluidas = $_GET['aulas_concluidas'];
 
-  $query = "select * from cursos where id = '$id' ";
-  $result = mysqli_query($conexao, $query);
+     $id = $_GET['id'];
 
-  $res = mysqli_fetch_array($result);
-  $nome = $res["nome"];
-  $arquivo = $res["arquivo"];
-  $imagem = $res["imagem"];
+
+     //VERIFICAR SE O ALUNO ESTÁ MATRICULADO NO CURSO E SUA MATRICULA ESTÁ APROVADA
+     $query_verificar_status = "SELECT * from matriculas where id_curso = '$id' and aluno = '$cpf_aluno' and status = 'Matriculado' ";
+     $result_verificar_status = mysqli_query($conexao, $query_verificar_status);
+               
+      $row_verificar_status = mysqli_num_rows($result_verificar_status);
+
+      if($row_verificar_status > 0){   
+
+
+
+       
+          
+        $aulas_concluidas = $_GET['aulas_concluidas'];
+
+        $query = "select * from cursos where id = '$id' ";
+        $result = mysqli_query($conexao, $query);
+
+        $res = mysqli_fetch_array($result);
+        $nome = $res["nome"];
+        $arquivo = $res["arquivo"];
+        $imagem = $res["imagem"];
                          
     ?>
 
@@ -332,7 +347,7 @@
 
                       $result_aluno = mysqli_query($conexao, $query_aluno);
                       $res_aluno = mysqli_fetch_array($result_aluno);
-                      $img_aluno = $res_aluno['imagem'];
+                      $img_aluno = $res_aluno['foto'];
                       $nome = $res_aluno['nome'];
                       ?>
                       <div class="mt-3">
@@ -364,11 +379,11 @@
 
                       $result_aluno = mysqli_query($conexao, $query_aluno);
                       $res_aluno = mysqli_fetch_array($result_aluno);
-                      $img_aluno = $res_aluno['imagem'];
+                      $img_aluno = $res_aluno['foto'];
                       $nome = $res_aluno['nome'];
                       ?>
                       <div class="mt-3">
-                        <small><span> <img class="rounded-circle z-depth-0" src="../imagens/perfil/<?php echo $img_aluno; ?>" width="25" height="25"> - <?php echo $nome; ?> <span class="ml-4"><?php echo $data2; ?></span> <span class="ml-2"><?php echo $respostas; ?> Respostas</span> </span><br>
+                        <small><span> <img class="rounded-circle z-depth-0" src="../img/perfil/<?php echo $img_aluno; ?>" width="25" height="25"> - <?php echo $nome; ?> <span class="ml-4"><?php echo $data2; ?></span> <span class="ml-2"><?php echo $respostas; ?> Respostas</span> </span><br>
                        <span> <a class="text-dark" href="painel_aluno.php?acao=cursos&func=responder&id=<?php echo $id; ?>&id_pergunta=<?php echo $id_pergunta; ?>&aulas_concluidas=<?php echo $aulas_concluidas; ?>">Aula <?php echo $aula ?> - <?php echo $pergunta ?></a> </span></small>
                      </div>
 
@@ -391,7 +406,11 @@
 
 
 <!--FECHAMENTO DO IF QUE VERIFICAR SE A JANELA MODAL DAS AUAS FOI ABERTA -->
-<?php } ?>
+<?php } else{ ?>
+
+<h5>Você não está matriulado neste curso!!</h5>
+
+<?php } }?>
 
 
 
@@ -400,6 +419,19 @@
 <?php 
   if(@$_GET['func'] == 'aula'){
     $id_curso = $_GET['id'];
+
+
+    //VERIFICAR SE O ALUNO ESTÁ MATRICULADO NO CURSO E SUA MATRICULA ESTÁ APROVADA
+     $query_verificar_status = "SELECT * from matriculas where id_curso = '$id_curso' and aluno = '$cpf_aluno' and status = 'Matriculado' ";
+     $result_verificar_status = mysqli_query($conexao, $query_verificar_status);
+               
+      $row_verificar_status = mysqli_num_rows($result_verificar_status);
+
+      if($row_verificar_status > 0){  
+
+
+
+
     $num_aula = $_GET['num_aula'];
 
 
@@ -467,7 +499,7 @@
         </div>
       </div>    
 
-<?php }   ?>
+<?php }  } ?>
 
 
 <?php 
@@ -804,6 +836,16 @@
 <?php 
   if(@$_GET['func'] == 'avaliar'){
     $id = $_GET['id'];
+
+
+
+    //VERIFICAR SE O ALUNO ESTÁ MATRICULADO NO CURSO E SUA MATRICULA ESTÁ APROVADA
+     $query_verificar_status = "SELECT * from matriculas where id_curso = '$id' and aluno = '$cpf_aluno' and status = 'Matriculado' ";
+     $result_verificar_status = mysqli_query($conexao, $query_verificar_status);
+               
+      $row_verificar_status = mysqli_num_rows($result_verificar_status);
+
+      if($row_verificar_status > 0){  
     
     
     $query = "select * from cursos where id = '$id' ";
@@ -820,13 +862,13 @@
 
     <!-- Modal AVALIACAO -->
       <div id="modalPergunta" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg ">
+        <div class="modal-dialog">
          <!-- Modal content-->
-          <div class="modal-content bg-light">
+          <div class="modal-content">
            
               <div class="modal-header">
                 
-                <h5 class="modal-title"><img class="mr-2" src="../imagens/cursos/<?php echo $imagem; ?>" width="40px"><small>Curso de <?php echo $nome; ?></small></h5>
+                <h5 class="modal-title"><img class="mr-2" src="../img/cursos/<?php echo $imagem; ?>" width="40px"><small>Curso de <?php echo $nome; ?></small></h5>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
             
@@ -871,7 +913,7 @@
 
 
 <!--FECHAMENTO DO IF QUE ABRE A MODAL DA AVALIAÇÃO DO CURSO -->
-<?php } ?>
+<?php } } ?>
 
       
 
