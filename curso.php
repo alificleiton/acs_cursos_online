@@ -500,6 +500,10 @@ session_start();
                       <span class="text-muted"><i><small><br>Liberação Imediata no Cartão <br>
                       Boleto pode demorar até 24 Horas.</small></i></span>
 
+                      <a title="Paypal - Acesso Imediato ao Curso" href="paypal/checkout.php?id=<?php echo $id_mat; ?>&curso=<?php echo $id_curso; ?>" target="_blank"><img src="imagens/pagamentos/paypal.png" width="200"></a> 
+                          <span class="text-muted"><i><small><br>Liberação Imediata no Cartão <br>
+                          Pagamentos no Estrangeiro.</small></i></span>
+
 
 
 

@@ -3,7 +3,7 @@ class PagSeguro{
 	private $email         = "alificleiton123@gmail.com";
 	private $token_sandbox = "B7F023B15C90417683C727A99AF34E03";
 	//private $token_oficial = "bafdf414-d814-4df3-9ca5-9108da96cf4978d0091a4b9bbb786f663ed033f238dc975f-921e-4710-b5a7-6e53e8508f7d";
-	private $url_retorno   = "http://localhost/portal/pagseguro/notificacao.php";
+	private $url_retorno   = "http://localhost/ACS APPS/pagseguro/notificacao.php";
 	
 	//URL OFICIAL
 	//COMENTE AS 4 LINHAS ABAIXO E DESCOMENTE AS URLS DA SANDBOX PARA REALIZAR TESTES

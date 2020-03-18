@@ -611,10 +611,10 @@
 
 
    if($_FILES['imagem']['name'] == ''){
-    $query = "UPDATE cursos SET nome = '$nome', desc_rapida = '$desc_rapida', desc_longa = '$desc_longa', valor = '$valor' , categoria = '$categoria', carga = '$carga' where id = '$id' ";
+    $query = "UPDATE cursos SET nome = '$nome', desc_rapida = '$desc_rapida', desc_longa = '$desc_longa', valor = '$valor' , carga = '$carga' where id = '$id' ";
 
    }else{
-    $query = "UPDATE cursos SET nome = '$nome', desc_rapida = '$desc_rapida', desc_longa = '$desc_longa', valor = '$valor' , categoria = '$categoria', carga = '$carga', imagem = '$imagem' where id = '$id' ";
+    $query = "UPDATE cursos SET nome = '$nome', desc_rapida = '$desc_rapida', desc_longa = '$desc_longa', valor = '$valor' , carga = '$carga', imagem = '$imagem' where id = '$id' ";
    }
     
 

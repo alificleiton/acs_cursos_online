@@ -65,9 +65,6 @@ if( isset($_GET['transaction_id']) ){
 	$pagamento->codigo_pagseguro = $_GET['transaction_id'];
 	if($pagamento->status==3 || $pagamento->status==4){
 
-		$query_m = "update matriculas set status = 'Matriculado' where id = '$id_matricula' ";
-        mysqli_query($conexao, $query_m);
-		
 		
 	}else{
 		//ATUALIZAR NA BASE DE DADOS

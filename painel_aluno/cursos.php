@@ -1,5 +1,7 @@
  <?php
     include_once('../conexao.php');
+    include_once('../pagseguro/PagSeguro.class.php');
+    $PagSeguro = new PagSeguro();
 
     ?>
 
@@ -42,7 +44,29 @@
                       <!--LISTAR TODOS OS USUÁRIOS -->
                       <?php
 
-                      $cpf_aluno = $_SESSION['cpf'];
+                        $cpf_aluno = $_SESSION['cpf'];
+
+                        //recuperar as matriculas do aluno e ver se tem aprovação de pagamento pendente
+                        $query_mat_al = "SELECT * from matriculas where aluno = '$cpf_aluno' ";
+
+                        $result_mat_al = mysqli_query($conexao, $query_mat_al);
+
+                        while($res_mat_al = mysqli_fetch_array($result_mat_al)){
+
+                        $id_matricula = $res_mat_al['id'];
+
+                        $P = $PagSeguro->getStatusByReference($id_matricula);
+
+                            if($P == 3 || $P == 4){
+                               
+                              $query_teste = "update matriculas set status = 'Matriculado' where id = '$id_matricula'";
+                              mysqli_query($conexao, $query_teste);
+
+                            }
+
+
+                        }
+
 
                         if(isset($_GET['buttonPesquisar']) and $_GET['txtpesquisarCursos'] != ''){
 
@@ -115,8 +139,25 @@
                             $valor = $res["valor"];
                             $data = $res["data"];
                             $status = $res["status"];
+                            $id_matricula = $res["id"];
 
                             $data2 = implode('/', array_reverse(explode('-', $data)));
+
+                            //verificar se o pagamento no pagseguro esta aprovado
+                            
+                            $P = $PagSeguro->getStatusByReference($id_matricula);
+
+                            if($P == 3 || $P == 4){
+                               
+                              $query_teste = "update matriculas set status = 'Matriculado' where id = '$id_matricula'";
+                              mysqli_query($conexao, $query_teste);
+
+                            }else{
+                              
+                              $query_matric = "update matriculas set status = 'Aguardando' where id = '$id_matricula'";
+                              mysqli_query($conexao, $query_matric);
+                            }
+
 
                             //EXTRAIR O NOME DO CURSO
                             $query_curso = "SELECT * from cursos where id = '$curso' ";
@@ -347,7 +388,7 @@
 
                       $result_aluno = mysqli_query($conexao, $query_aluno);
                       $res_aluno = mysqli_fetch_array($result_aluno);
-                      $img_aluno = $res_aluno['foto'];
+                      $img_aluno = $res_aluno['imagem'];
                       $nome = $res_aluno['nome'];
                       ?>
                       <div class="mt-3">
