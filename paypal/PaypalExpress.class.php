@@ -9,8 +9,8 @@
 class PaypalExpress{
     public $paypalEnv       = 'sandbox'; // 'sandbox' ou 'production'
     public $paypalURL       = 'https://api.sandbox.paypal.com/v1/';  // 'https://api.sandbox.paypal.com/v1/'   ou   'https://api.paypal.com'
-    public $paypalClientID  = 'AQlWjwJQK-gWnfmwRWoD7xrTEpgw1oWyY5SJv_dinY_Bx_SDFyidM3Z--UiS09-EEsLvjsxbtxcs0QkV';
-    private $paypalSecret   = 'EOn0_NXLkLA00BWN9xNFt9W_wBh5IFE9CcCtDLx0T2ujlEeg9MAE60G-eqjHufSb7yFPSirNNQMOHRZh';
+    public $paypalClientID  = 'AQ_Tif8519Qp7KOCPGz85XUiugFndKV65qWAJKBVzRa9s13IPq-b42ELLjMzPV4L9S4HCyt24o6Ohf0E';
+    private $paypalSecret   = 'ENl1Ku2kcx_Ry-rnNZyY9OECVEAYzD-8y-LfBGClqqY2eUxmTdRXFbTVe8lUugkMr2lXbd_bTTRPy03H';
     
     public function validate($paymentID, $paymentToken, $payerID, $productID){
         $ch = curl_init();

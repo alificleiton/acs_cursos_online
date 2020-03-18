@@ -87,7 +87,7 @@ $conditions = array(
                     <div class="cursos-hover">
                     
                     </div>
-                    <img class="img-fluid" src="../img/cursos/<?php echo $imagem; ?>" width="200" alt="">
+                    <img class="img-fluid" src="../imagens/cursos/<?php echo $imagem; ?>" width="200" alt="">
                   
                   <div class="cursos-caption">
                      <span class="nome_curso"><?php echo $curso; ?></span><br>
