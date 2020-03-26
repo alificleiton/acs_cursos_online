@@ -117,13 +117,13 @@
         
         <div class="list-group list-group-flush">
 
-           <span href="#" class=" list-group-item ativo">Painel Administrativo</span>
+           <a class="text-dark" href="painel_admin.php?acao=home"><span class=" list-group-item ativo">Painel Administrativo</span></a>
           
           <a href="painel_admin.php?acao=usuarios" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user-friends mr-1"></i>Usuários</a>
           <a href="painel_admin.php?acao=cursos" class="list-group-item list-group-item-action bg-light"><i class="fas fa-book-reader mr-1"></i>Curso</a>
           <a href="painel_admin.php?acao=categorias" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sitemap mr-1"></i>Categorias</a>
           <a href="painel_admin.php?acao=matricula" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sitemap mr-1"></i>Matriculas</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sitemap mr-1"></i>Profile</a>
+          <a href="painel_admin.php?acao=vendas" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sitemap mr-1"></i>Vendas</a>
           <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sitemap mr-1"></i>Status</a>
         </div>
       </div>
@@ -141,6 +141,9 @@
           include_once "cursos.php";
         }else if(@$_GET['acao'] == 'matricula' or isset($_GET['txtpesquisarMatriculas'])){
           include_once "matriculas.php";
+        }else if(@$_GET['acao'] == 'vendas' or isset($_GET['dataInicial'])){
+          include_once "vendas.php";
+
         }else {
           include_once "home.php";
         }

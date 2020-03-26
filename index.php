@@ -12,11 +12,11 @@
             <div id="carousel-spotify" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <h1>Tecnologia para todos</h1>
+                  <h1>Conhecimento para todos</h1>
                   <a href="" class="btn btn-lg btn-custom btn-roxo">
                     Aproveite o ACS CURSOS ONLINE
                   </a>
-                  <a href="" class="btn btn-lg btn-custom btn-branco">
+                  <a href="cursos.php" class="btn btn-lg btn-custom btn-branco">
                     Confira nossas aulas
                   </a>
                 </div>
@@ -87,20 +87,47 @@
 
     <!-- DEFINIÇÃO DE QUEM SOMOS  INSERÇÃO DA IMAGEM QUE SOME QUANDO FICA MOBILE ------------------------------------ -->
     <section id="recursos" class="caixa">
-      <div class="container">
+      <div class="container teste">
         <div class="row">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase"> QUEM SOMOS ?</h2>
-            <h4 class="section-subheading"> Conheça o ACS Cursos Online</h4>
+            <h4 class="section-subheading"> Conheça o ACS CURSOS ONLINE</h4>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 text-center">
-                
             <p class="py-4 text-light"> Plataforma de cursos online , que visa a portabilidade, facilidade, acessibilidade de forma a garantir conteúdos de qualidade para seu dia a dia, onde você poderá estudar quando e onde quiser, com preços acessíveis e aulas didáticas.</p>
+            <h4 class="text-uppercase py-4"> Sobre o autor</h4>
+            <div class="row ">
+                <div class="col-md-4 text-center ">
+                  <img class="mx-auto rounded-circle " width="160" height="190" src="imagens/eumesmo3.png" alt="">
+                  <h4> Alifi Cleiton</h4>
+                  <p class="text-light text-center">Cientista da Computação</p>
+                  <ul class="list-inline social-buttons">
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fab fa-youtube bg-light"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item bg-light">
+                      <a href="#">
+                        <i class="fab fa-facebook"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fab fa-instagram bg-light"></i>
+                      </a>
+                    </li>
+
+                </div>
+                <div class="col-md-8 py-4">
+                  <p>Sou formado em ciência da computação na Universidade Federal de Itajubá, atuo há 2 anos na área de tecnologia de informação, tenho experiência em desenvolvimento Full Stack, sou professor e ministro aulas de tecnologia.</p>
+                </div>
+            </div>
           </div>
-          <div class="col-md-6 text-center">
-            <p class="text-muted"> IMAGEM.</p>
+          <div class="col-md-6">
+            <img  class="d-none d-md-block" src="imagens/cidadecircular5.png" width="600" alt="">
           </div>
         </div>
       </div>
@@ -109,7 +136,7 @@
     
     
   
-<!-- DEFINIÇÃO DE QUEM SOMOS  INSERÇÃO DA IMAGEM QUE SOME QUANDO FICA MOBILE ------------------------------------ -->
+<!-- DEFINIÇÃO DE QUEM SOMOS  INSERÇÃO DA IMAGEM QUE SOME QUANDO FICA MOBILE ------------------------------------ 
     <section id="servicos" class="caixa">
       <div class="container">
         <div class="row">
@@ -147,7 +174,45 @@
           </div>
         </form>       
       </div>
-    </section><!----------------------------------------------------------------------------------------------------->
+    </section>--------------------------------------------------------------------------------------------------->
+
+ <section id="servicos" class="caixa">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2 class= "text-dark">NOSSOS IDEAIS</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x text-warning"></i>
+              <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="text-dark">Segurança</h4>
+            <p class="text-muted"> Todo o site contém um sistema de segurança onde todo acesso é único e garantia total de devolução do dinheiro.
+          </div>
+          <div class="col-md-4 text-center">
+             <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x text-success"></i>
+              <i class="fas fa-check-circle fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="text-dark">Qualidade</h4>
+            <p class="text-muted"> Desenvolvemos aulas didáticas com a mais alta qualidade de ensino.
+          </div>
+          <div class="col-md-4 text-center ">
+             <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x text-danger"></i>
+              <i class="fas fa-play-circle fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="text-dark">Acesso Ilimitado</h4>
+            <p class="text-muted"> Veja quando quiser. O conteúdo do curso é seu para sempre!
+          </div>
+        </div>
+        
+      </div>
+</section>
+
 
 
     <!-- Contatos --------------------------------------------------------------------------------------------------->

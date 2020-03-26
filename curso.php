@@ -4,6 +4,16 @@ include_once("conexao.php");
 session_start();
 ?>
 
+<?php 
+
+//includes para o mercado pago
+include_once("mercadopago/lib/mercadopago.php");
+include_once("mercadopago/PagamentoMP.php");
+$pagar = new PagamentoMP;
+$url = "http://localhost/ACS APPS";
+
+ ?>
+
 
   <?php 
 
@@ -445,7 +455,7 @@ session_start();
 
               <? if($nivel == ''){?>
 
-              <p class="text-muted"> Você precisa estar logado no site para efetuar a matrícua no curso, faça seu login <a href="login.php?curso=<? echo $id_curso; ?>" target="_blank" class="text-danger">aqui</a> ou caso não tenha cadastro cadastre-se <a href="login.php?curso=<? echo $id_curso; ?>&acao=loginpgto" target="_blank" class="text-danger">aqui!!!</p>
+              <p class="text-muted"> Você precisa estar logado no site para efetuar a matrícula no curso, faça seu login <a href="login.php?curso=<? echo $id_curso; ?>" target="_blank" class="text-danger"> aqui </a> ou caso não tenha cadastro cadastre-se <a href="login.php?curso=<? echo $id_curso; ?>&acao=loginpgto" target="_blank" class="text-danger"> aqui!!!</p>
 
               <? }else{ ?>
 
@@ -496,13 +506,52 @@ session_start();
 
                     ?>
 
-                      <a title="PagSeguro - Acesso Imediato ao Curso" target="_blank" href="pagseguro/checkout.php?codigo=<?php echo $id_mat; ?>&curso=<?php echo $id_curso; ?>"><img src="imagens/pagamentos/pagseguro.png" width="200"></a>
-                      <span class="text-muted"><i><small><br>Liberação Imediata no Cartão <br>
-                      Boleto pode demorar até 24 Horas.</small></i></span>
+                    <div class="row">
+                      <div class="col-md-4 col-sm-12 mb-1">
 
-                      <a title="Paypal - Acesso Imediato ao Curso" href="paypal/checkout.php?id=<?php echo $id_mat; ?>&curso=<?php echo $id_curso; ?>" target="_blank"><img src="imagens/pagamentos/paypal.png" width="200"></a> 
+                          <a title="PagSeguro - Acesso Imediato ao Curso" target="_blank" href="pagseguro/checkout.php?codigo=<?php echo $id_mat; ?>&curso=<?php echo $id_curso; ?>"><img src="imagens/pagamentos/pagseguro.png" width="200"></a>
+                          <span class="text-muted"><i><small><br>Liberação Imediata no Cartão <br>
+                          Boleto pode demorar até 24 Horas.</small></i></span>
+
+                      </div>
+
+                      <div class="col-md-4 col-sm-12 mb-1">
+                        <a title="Paypal - Acesso Imediato ao Curso" href="paypal/checkout.php?id=<?php echo $id_mat; ?>&curso=<?php echo $id_curso; ?>" target="_blank"><img src="imagens/pagamentos/paypal.png" width="200"></a> 
                           <span class="text-muted"><i><small><br>Liberação Imediata no Cartão <br>
                           Pagamentos no Estrangeiro.</small></i></span>
+                      </div>
+
+                     <!--
+                      <div class="col-md-4 col-sm-12 mb-1">
+                        //<?php 
+                          //botao do mercado pago
+                          //$btn = $pagar->PagarMP($id_mat, $nome_curso, (float)$valor_mat, $url);
+
+                           //echo $btn;
+                         ?>
+
+                          <span class="text-muted"><i><small><br>Liberação Imediata Cartão ou Saldo <br>
+                          Boleto pode demorar até 24 Horas.</small></i></span>
+                      </div>
+                      -->
+                    
+                     
+
+                     </div>
+
+
+
+                     <div class="row mt-4">
+                       <div class="col-md-12">
+                        <p align="center">Depósitos ou Transferências </p> 
+                        <span class="text-muted"><small> Precisamos que nos envie o comprovante para a liberação do curso, se for transferência será liberado de Imediato, caso seja depósito ou Doc precisa aguardar o pagamento ser compensado, geralmente de 12 a 24 horas, pode nos mandar o comprovante no WhatsApp <a class="text-muted" href="http://api.whatsapp.com/send?1=pt_BR&phone=5535992220490" alt="35 99222-0490" target="_blank"><i class="fab fa-whatsapp mr-1 text-success"></i>31 97527-5084</a> ou no email alificleiton123@gmail.com !!</span></small>
+
+                        <a href="imagens/pagamentos/contas-grande.png" title="Clique para Ampliar" target="_blank">
+                        <img src="imagens/pagamentos/contas.png" width="100%" class="mt-3">
+                        <p align="center" class="text-danger"><i><small>Clique para Ampliar</small></i></p> </a>
+
+                       </div>
+                     </div>
 
 
 

@@ -5,41 +5,19 @@
 	<footer>
 	  <div class="container">
 	    <div class="row">
-	      <div class="col-md-2">
-	        <img src="imagens/spotify.svg" width="142">
+	      <div class="col-md-2 col-sm-12 text-center">
+	        <img src="imagens/EEEE.png" width="142">
 	      </div>
-	      <div class="col-md-2">
-	        <h4>COMPANY</h4>
-	        <ul class="navbar-nav">
-	          <li><a href="">Sobre</a></li>
-	          <li><a href="">Empregos</a></li>
-	          <li><a href="">Imprensa</a></li>
-	          <li><a href="">Novidades</a></li>
-	        </ul>
+	      <div class="col-md-6 col-sm-12 text-center text-light py-2 ">
+	      	
+	      	<p>&copy; 2020 ACS CURSOS ONLINE</p>
+	      	<p><i class="fas fa-envelope"></i> alificleiton123@gmail.com</p>
+	      	<p><i class="fa fa-phone"></i> (35) 9 9222-0490 </p>
 	      </div>
-	      <div class="col-md-2">
-	        <h4>COMUNIDADES</h4>
-	        <ul class="navbar-nav">
-	          <li><a href="">Artistas</a></li>
-	          <li><a href="">Desenvolvedores</a></li>
-	          <li><a href="">Marcas</a></li>
-	        </ul>
-	      </div>
-	      <div class="col-md-2">
-	        <h4>LINKS UTEIS</h4>
-	        <ul class="navbar-nav">
-	          <li><a href="">Ajuda</a></li>
-	          <li><a href="">Presentes</a></li>
-	          <li><a href="">Player da web</a></li>
-	        </ul>
-	      </div>
-	      <div class="col-md-4">
+	      <div class="col-md-4 col-sm-12 text-center">
 	        <ul>
 	          <li>
 	            <a href=""><img src="imagens/facebook.png"></a>
-	          </li>
-	          <li>
-	            <a href=""><img src="imagens/twitter.png"></a>
 	          </li>
 	          <li>
 	            <a href=""><img src="imagens/instagram.png"></a>
@@ -49,8 +27,6 @@
 	    </div>
 	  </div>
 	</footer>
-
-
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->

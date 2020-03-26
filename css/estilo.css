@@ -6,10 +6,8 @@ html, body, #home{
 body{
 	background: url(../imagens/ruido.png),
 				linear-gradient(50deg, #ff4169, #7c26f8)
-				fixed;
+				
 }
-
-
 
 nav.navbar-transparente{
 	padding: 15px 0px;
@@ -343,3 +341,5 @@ margin-top:-12px
 	color:#5f2a10;
 	font-size: 20px !important;
 }
+
+

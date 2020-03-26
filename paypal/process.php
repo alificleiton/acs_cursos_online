@@ -46,13 +46,13 @@ if(!empty($_GET['paymentID']) && !empty($_GET['token']) && !empty($_GET['payerID
 
 
           //trazer os dados da matricula para salvar nas vendas
-           $query_mat = "SELECT * from matriculas where id = '$productID' ";
+        $query_mat = "SELECT * from matriculas where id = '$productID' ";
 
-           $result_mat = mysqli_query($conexao, $query_mat);
-           $res_mat = mysqli_fetch_array($result_mat);
-           $aluno_mat = $res_mat['aluno'];
-           $curso_mat = $res_mat['id_curso'];
-           $valor_mat = $res_mat['valor'];
+        $result_mat = mysqli_query($conexao, $query_mat);
+        $res_mat = mysqli_fetch_array($result_mat);
+        $aluno_mat = $res_mat['aluno'];
+        $curso_mat = $res_mat['id_curso'];
+        $valor_mat = $res_mat['valor'];
 
 
         //LANÇAR O VALOR DA MATRICULA NA TABELA DE VENDAS

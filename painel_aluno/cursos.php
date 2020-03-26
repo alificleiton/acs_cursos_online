@@ -62,6 +62,29 @@
                               $query_teste = "update matriculas set status = 'Matriculado' where id = '$id_matricula'";
                               mysqli_query($conexao, $query_teste);
 
+
+                              $query_mat = "SELECT * from matriculas where id = '$id_matricula' ";
+                              $result_mat = mysqli_query($conexao, $query_mat);
+                              $res_mat = mysqli_fetch_array($result_mat);
+                              $aluno_mat = $res_mat['aluno'];
+                              $curso_mat = $res_mat['id_curso'];
+                              $valor_mat = $res_mat['valor']
+
+
+                              //verificar se a venda esta lançada
+                              $query_v = "SELECT * from vendas where i_matricula = '$id_matricula' ";
+                              $result_v = mysqli_query($conexao, $query_v);
+                              $linhas = mysqli_num_rows($result_v);
+                              if($linhas == 0){
+                                //lançar o valor da matrícula na tabela de vendas
+                                $query_vendas = "INSERT INTO vendas (curso, valor , aluno, data , id_matricula) values ('$curso_mat','$valor_mat', '$aluno_mat', curDate()  , '$id_matricula') ";
+                                mysqli_query($conexao, $query_vendas);
+                              }
+
+
+
+                               
+
                             }
 
 
