@@ -70,13 +70,13 @@
               $nome_novo = strtolower( preg_replace("[^a-zA-Z0-9-]", "-", strtr(utf8_decode(trim($nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")) );
               $nome_sem_espaco = preg_replace('/[ -]+/' , '-' , $nome_novo);
           ?>
-          <div class="col-md-4 col-sm-6 cursos-item">
+          <div class="col-md-4 col-sm-6 cursos-item text-center">
             <a class="cursos-link" href="curso.php?curso=<?php echo $nome_sem_espaco; ?>&id=<?php echo $id; ?>">
               <img class="img-fluid" src="imagens/cursos/<?php echo $imagem; ?>" width="250" alt="">
             </a>
             <div class="cursos-caption">
-              <h4><?php echo $nome; ?></h4>
-              <p class="text-muted"><?php echo $desc_rapida; ?></p>
+              <h4 class="text-center"><?php echo $nome; ?></h4>
+              <p class="text-dark text-center"><?php echo $desc_rapida; ?></p>
             </div>
           </div>
             <? } ?><!-- FECHAMENTO WHILE-------------------------------------------------------------------------------->
@@ -87,9 +87,9 @@
 
     <!-- DEFINIÇÃO DE QUEM SOMOS  INSERÇÃO DA IMAGEM QUE SOME QUANDO FICA MOBILE ------------------------------------ -->
     <section id="recursos" class="caixa">
-      <div class="container teste">
+      <div class="container">
         <div class="row">
-          <div class="col-lg-12 text-center">
+          <div class="col-lg-12 text-center py-4">
             <h2 class="section-heading text-uppercase"> QUEM SOMOS ?</h2>
             <h4 class="section-subheading"> Conheça o ACS CURSOS ONLINE</h4>
           </div>
@@ -100,7 +100,7 @@
             <h4 class="text-uppercase py-4"> Sobre o autor</h4>
             <div class="row ">
                 <div class="col-md-4 text-center ">
-                  <img class="mx-auto rounded-circle " width="160" height="190" src="imagens/eumesmo3.png" alt="">
+                  <!--<img class="mx-auto myself " width="160" height="190" src="imagens/eumesmo3.png" alt="">
                   <h4> Alifi Cleiton</h4>
                   <p class="text-light text-center">Cientista da Computação</p>
                   <ul class="list-inline social-buttons">
@@ -118,16 +118,46 @@
                       <a href="#">
                         <i class="fab fa-instagram bg-light"></i>
                       </a>
-                    </li>
+                    </li>-->
+                    <ul id="album-fotos">
+                      <li id="foto01">
+                        <span>
+                          <p><b>Alifi Cleiton</b></br>
+                          Cientista da Computação</br>
+                          <a href="#">
+                            <i class="fab fa-youtube bg-light"></i>
+                          </a>
+                          <a href="#">
+                            <i class="fab fa-facebook"></i>
+                          </a>
+                          <a href="#">
+                            <i class="fab fa-instagram bg-light"></i>
+                          </a>
+                            
+                          </p>
+                        </span>
+                      </li>
+                    </ul>
 
                 </div>
-                <div class="col-md-8 py-4">
-                  <p>Sou formado em ciência da computação na Universidade Federal de Itajubá, atuo há 2 anos na área de tecnologia de informação, tenho experiência em desenvolvimento Full Stack, sou professor e ministro aulas de tecnologia.</p>
+                <div class="col-md-8 py-4 ">
+                  <p >Sou formado em ciência da computação na Universidade Federal de Itajubá, atuo há 2 anos na área de tecnologia de informação, tenho experiência em desenvolvimento Full Stack, sou professor e ministro aulas de tecnologia.</p>
                 </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <img  class="d-none d-md-block" src="imagens/cidadecircular5.png" width="600" alt="">
+          <div class="col-md-6 ">
+            
+            <div class="card ml-auto">
+              <div class="face front text-center">
+                <p class="text-dark"><b>"Investir</br> em conhecimento</br> rende sempre</br>  os melhores </br> juros"</b></p>
+              </div>
+              <div class ="face back text-center">
+
+                <p ><b>"Conhecimento</br> gera conhecimento"</br></b> </p>
+                <!--<img  class="d-none d-md-block " src="imagens/cidadecircular2.png" width="600" alt="">-->
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 
+
 html, body, #home{
 	height: 100%;
 }
@@ -6,7 +7,8 @@ html, body, #home{
 body{
 	background: url(../imagens/ruido.png),
 				linear-gradient(50deg, #ff4169, #7c26f8)
-				
+				fixed;
+				font-family: Helvetica, Arial, sans-serif;
 }
 
 nav.navbar-transparente{
@@ -63,18 +65,72 @@ nav.navbar-transparente{
 	background: white;
 }
 
-#servicos{
-	background: white;
-}
-
 #recursos{
 	color: white;
 }
 
-#increvase{
-	background: white;
-	color:black;
+
+#servicos .section-heading{
+	color: #7c25f8;
 }
+
+
+
+
+@import url('https://font.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+#recursos .card{
+	position:relative;
+	transform-style: preserve-3d;
+	background: #3bc2ff;
+	border: 5px solid #ffffff;
+}
+
+#recursos .card .face{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 2s ease-in-out;
+	backface-visibility: hidden;
+	transform: perspective(500px) rotateY(0deg);
+}
+
+
+#recursos .card .face.front{
+	background-color: #ff0;
+}
+
+#recursos .card:hover .face.front{
+	transform: perspective(500px) rotateY(180deg);
+	
+}
+
+#recursos .card .face.back{
+	background-color: #3bc2ff;
+	color: #fff !important;
+	transform: perspective(500px) rotateY(180deg);
+}
+
+#recursos .card:hover .face.back{
+	transform: perspective(500px) rotateY(360deg);
+	
+}
+
+
+#recursos .card .face h2,h4{
+	text-transform: uppercase;
+	transform: perspective(500px) translateZ(50px);
+}
+
+
+
+
 
 .caixa{
 	padding-top:20px;
@@ -85,9 +141,44 @@ nav.navbar-transparente{
 	color: #9bf0e1;
 }
 
-#recursos h2,h4{
+#recursos h2{
 	color: white;
 }
+
+#recursos ul#album-fotos{
+	list-style: none;
+}
+
+#recursos ul#album-fotos li{
+	float:right;
+	width:200px;
+	height: 300px;
+	margin:10px;
+	border: 5px solid #ffffff;
+	background-color: #ffffff;
+	box-shadow: 1px 1px 3px rgba(0,0,0,.4);
+	-webkit-transition: all .4s ease-in;
+}
+
+#recursos ul#album-fotos li:hover{
+	-webkit-transform: scale(1.2);
+}
+
+#recursos ul#album-fotos li#foto01{
+	background: url('../imagens/eumesmo4.png') no-repeat;
+}
+
+
+
+#recursos ul#album-fotos li span p{
+	opacity: 1;
+	text-shadow: 1px 1px 1px #000000;
+	background-color: rgba(0,0,0,.3);
+	font-size: 9pt;
+	line-height: 20px;
+	padding: 5px;
+}
+
 
 .albuns{
 	padding: 10px 0;
@@ -132,14 +223,24 @@ footer ul li{
 	margin: 0 5px;
 }
 
-#home, h1{
+h1{
 	font-weight: 900;
 	letter-spacing: -0.05em;
 	margin-bottom: 50px;
 	color: white;
 }
 
+h2{
+	font-size: 3em;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+}
 
+h3{
+	font-size: 2em;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+}
 
 /*extra small devices*/
 @media (max-width:575.98px){
@@ -149,6 +250,17 @@ footer ul li{
 	.btn-custom{
 		margin: 10px 15px;
 	}
+
+	#recursos .card{
+		width: 200px;
+		height: 200px;
+	}
+
+	#recursos .card .face p{
+		font-size: 20px;
+	}
+
+
 }
 
 /*small devices*/
@@ -159,12 +271,28 @@ footer ul li{
 	.btn-custom{
 		margin: 10px 15px;
 	}
+
+	#recursos .card{
+		width: 200px;
+		height: 200px;
+	}
+	#recursos .card .face p{
+		font-size: 20px;
+	}
 }
 
 /*medium devices*/
 @media (min-width:768px) and (max-width:991.98px){
 	h1{
 		font-size: 4em;
+	}
+	#recursos .card{
+		width: 300px;
+		height: 300px;
+	}
+
+	#recursos .card .face p{
+		font-size: 30px;
 	}
 }
 
@@ -173,6 +301,13 @@ footer ul li{
 	h1{
 		font-size: 5em;
 	}
+	#recursos .card{
+		width: 400px;
+		height: 400px;
+	}
+	#recursos .card .face p{
+		font-size: 40px;
+	}
 }
 
 /*extra large devices*/
@@ -180,8 +315,14 @@ footer ul li{
 	h1{
 		font-size: 6em;
 	}
+	#recursos .card{
+		width: 500px;
+		height: 500px;
+	}
+	#recursos .card .face p{
+		font-size: 50px;
+	}
 }
-
 
 .botao-buscar{
 	color: white;

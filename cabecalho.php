@@ -41,10 +41,12 @@
            </button>
 
            <div class="collapse navbar-collapse" id="nav-principal">
-              <form class="form-inline ml-5 my-2 my-lg-0">
-                <input class="form-control ml-2 mr-sm-2" name="txtpesquisarCursos" type="search" placeholder="Pesquisar" aria-label="Pesquisar"><button class="btn btn-outline-light my-2 my-sm-0 botao-buscar" name="buttonPesquisar" type="submit">
-                <i class="fas fa-search lupa-buscar"></i></button>
+             
 
+              <form class="form-inline ml-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0 botao-buscar" name="buttonPesquisar" type="submit">
+                <i class="fas fa-search lupa-buscar"></i></button>
               </form>
               <ul class="navbar-nav ml-auto">
 
@@ -52,7 +54,7 @@
                     <a href="index.php#home" class="nav-link">HOME</a>
                   </li>
                   <li class="nav-item">
-                    <a href="index.php#servicos" class="nav-link">QUEM SOMOS</a>
+                    <a href="index.php#recursos" class="nav-link">QUEM SOMOS</a>
                   </li>
                   <li class="nav-item">
                     <a href="cursos.php" class="nav-link " >CURSOS</a>
@@ -82,8 +84,7 @@
                    <? } ?>
 
 
-                  ?>
-
+                 
 
                   
               </ul>
