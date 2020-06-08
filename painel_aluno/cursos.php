@@ -68,11 +68,11 @@
                               $res_mat = mysqli_fetch_array($result_mat);
                               $aluno_mat = $res_mat['aluno'];
                               $curso_mat = $res_mat['id_curso'];
-                              $valor_mat = $res_mat['valor']
+                              $valor_mat = $res_mat['valor'];
 
 
                               //verificar se a venda esta lançada
-                              $query_v = "SELECT * from vendas where i_matricula = '$id_matricula' ";
+                              $query_v = "SELECT * from vendas where id_matricula = '$id_matricula' ";
                               $result_v = mysqli_query($conexao, $query_v);
                               $linhas = mysqli_num_rows($result_v);
                               if($linhas == 0){
@@ -80,10 +80,6 @@
                                 $query_vendas = "INSERT INTO vendas (curso, valor , aluno, data , id_matricula) values ('$curso_mat','$valor_mat', '$aluno_mat', curDate()  , '$id_matricula') ";
                                 mysqli_query($conexao, $query_vendas);
                               }
-
-
-
-                               
 
                             }
 
@@ -167,20 +163,17 @@
                             $data2 = implode('/', array_reverse(explode('-', $data)));
 
                             //verificar se o pagamento no pagseguro esta aprovado
-                            
+                            /*
                             $P = $PagSeguro->getStatusByReference($id_matricula);
-
                             if($P == 3 || $P == 4){
-                               
                               $query_teste = "update matriculas set status = 'Matriculado' where id = '$id_matricula'";
                               mysqli_query($conexao, $query_teste);
-
                             }else{
                               
                               $query_matric = "update matriculas set status = 'Aguardando' where id = '$id_matricula'";
                               mysqli_query($conexao, $query_matric);
                             }
-
+                            */
 
                             //EXTRAIR O NOME DO CURSO
                             $query_curso = "SELECT * from cursos where id = '$curso' ";
@@ -553,7 +546,7 @@
             <div class="modal-body">
              
 
-              <iframe width="760" height="500" src="<?php echo $link; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe class="embed-responsive embed-responsive-21by9 mb-5" style="height:400px;" width="760" height="500" src="<?php echo $link; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                
              
             </div>

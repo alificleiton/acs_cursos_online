@@ -62,7 +62,7 @@
       <nav class = "navbar navbar-expand-md navbar-light bg-dark fixed-top navbar-transparente">
         <div class="container">
            <a href="../index.php" class="navbar-brand" target="_blank">
-              <img src="../imagens/EEEE.png" width="200">
+              <img src="../imagens/EEEE.png" width="90">
            </a>
 
            <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">

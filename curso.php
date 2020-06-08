@@ -64,15 +64,7 @@ $url = "http://localhost/ACS APPS";
         <h5>Curso de <? echo $nome; ?> - <small><? echo $desc_rapida; ?></small></h5>
 
         <!-- VERIFICAR SE O ALUNO ESTA LOGADO -->
-
-        
-
-
-          <a href="curso.php?acao=pagamento&id=<? echo $id; ?>"><span class="valor"><i class="mt-3 fas fa-shopping-cart mr-1"></i>Matricule-se R$  <? echo $valor; ?></span></a>
-
-        
-
-         
+          <a href="curso.php?acao=pagamento&id=<? echo $id; ?>"><span class="valor"><i class="mt-3 fas fa-shopping-cart mr-1"></i>Matricule-se R$  <? echo $valor; ?></span></a>         
 
       </div>
 
@@ -169,17 +161,12 @@ $url = "http://localhost/ACS APPS";
 
                     <div class="col-md-3 col-sm-6 cursos-item">
                       <a class="cursos-link" href='curso.php?curso=<?php echo $nome_sem_espaco_2; ?>&id=<?php echo $id; ?>'>
-                        <div class="cursos-hover">
-                          <div class="cursos-hover-content">
-                            <i class="fas fa-plus fa-3x"></i>
-                          </div>
-                        </div>
-                        <img class="img-fluid" src="imagens/cursos/<? echo $imagem; ?>" alt="">
+                        <img class="img-fluid text-center" src="imagens/cursos/<? echo $imagem; ?>" alt="">
                       </a>
                       <div class="cursos-caption">
-                        <h4 class="text-dark "><? echo $nome; ?></h4>
-                        <p class="text-muted"><? echo $desc_rapida; ?></p>
-                        <p class="text-dark"><? echo $valor; ?></p>
+                        <h4 class="text-dark text-center "><? echo $nome; ?></h4>
+                        <p class="text-muted text-center"><? echo $desc_rapida; ?></p>
+                        <p class="text-dark text-center"> R$ <? echo $valor; ?></p>
                       </div>
                     </div>
 
@@ -380,12 +367,10 @@ $url = "http://localhost/ACS APPS";
             </form>
             <div class="modal-body">
 
-              <iframe width="560" height="315" src="<? echo $link_aula ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              
+              <iframe class="embed-responsive embed-responsive-21by9" src="<? echo $link_aula ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style="height:400px;" allowfullscreen></iframe>
              
             </div>
                    
-            
             </div>
           </div>
         </div>
@@ -521,19 +506,19 @@ $url = "http://localhost/ACS APPS";
                           Pagamentos no Estrangeiro.</small></i></span>
                       </div>
 
-                     <!--
+                     
                       <div class="col-md-4 col-sm-12 mb-1">
                         //<?php 
                           //botao do mercado pago
-                          //$btn = $pagar->PagarMP($id_mat, $nome_curso, (float)$valor_mat, $url);
+                          $btn = $pagar->PagarMP($id_mat, $nome_curso, (float)$valor_mat, $url);
 
-                           //echo $btn;
+                           echo $btn;
                          ?>
 
                           <span class="text-muted"><i><small><br>Liberação Imediata Cartão ou Saldo <br>
                           Boleto pode demorar até 24 Horas.</small></i></span>
                       </div>
-                      -->
+                      
                     
                      
 

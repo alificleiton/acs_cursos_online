@@ -48,9 +48,9 @@ $venda = array("codigo"=>$id_matricula,
 			   "rua"=>"",
 			   "numero"=>"",
 			   "bairro"=>"",
-			   "cidade"=>"",
-			   "estado"=>"", //2 LETRAS MAIÚSCULAS
-			   "cep"=>"",
+			   "cidade"=>$cidade,
+			   "estado"=>$estado, //2 LETRAS MAIÚSCULAS
+			   "cep"=>"37.503-190",
 			   "codigo_pagseguro"=>$id_matricula);
 			   
 $PagSeguro->executeCheckout($venda,"http://localhost/ACS APPS/painel_aluno/painel_aluno.php?acao=cursos");

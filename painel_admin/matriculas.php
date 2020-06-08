@@ -207,14 +207,17 @@
 
                              <td>
 
+
+
                               <?php if($status == 'Aguardando'){  ?>
-                              <a href="painel_admin.php?acao=matriculas&func=aprovar&id=<?php echo $id; ?>" title="Aprovar Matricula"><i class="fas fa-square text-danger mr-2"></i></a>
+                              <a href="painel_admin.php?acao=matricula&func=aprovar&id=<?php echo $id; ?>" title="Aprovar Matricula"><i class="fas fa-square text-danger mr-2"></i></a>
+
                             
                               <?php } ?>
 
                            
                               <?php if($status == 'Matriculado'){  ?>
-                               <a href="painel_admin.php?acao=matriculas&func=cancelar&id=<?php echo $id; ?>" title="Cancelar Matricula">
+                               <a href="painel_admin.php?acao=matricula&func=cancelar&id=<?php echo $id; ?>" title="Cancelar Matricula">
                               <i class="fas fa-square text-success"></i></a>
                               <?php } ?>
 
@@ -278,11 +281,11 @@
     //trazer os dados da matricula para salvar nas vendas
        $query_mat = "SELECT * from matriculas where id = '$id' ";
 
-                            $result_mat = mysqli_query($conexao, $query_mat);
-                            $res_mat = mysqli_fetch_array($result_mat);
-                            $aluno_mat = $res_mat['aluno'];
-                            $curso_mat = $res_mat['id_curso'];
-                            $valor_mat = $res_mat['valor'];
+      $result_mat = mysqli_query($conexao, $query_mat);
+      $res_mat = mysqli_fetch_array($result_mat);
+      $aluno_mat = $res_mat['aluno'];
+      $curso_mat = $res_mat['id_curso'];
+      $valor_mat = $res_mat['valor'];
                            
 
 
@@ -296,7 +299,7 @@
   mysqli_query($conexao, $query_vendas);
 
 
-  echo "<script language='javascript'>window.location='painel_admin.php?acao=matriculas'; </script>";
+  echo "<script language='javascript'>window.location='painel_admin.php?acao=matricula'; </script>";
 
 }
 

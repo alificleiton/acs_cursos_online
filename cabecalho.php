@@ -32,7 +32,7 @@
       <nav class = "navbar navbar-expand-md navbar-light bg-dark fixed-top navbar-transparente">
         <div class="container">
            <a href="index.php" class="navbar-brand" >
-              <img src="imagens/EEEE.png" width="200">
+              <img src="imagens/EEEE.png" width="120">
            </a>
 
 
@@ -42,12 +42,12 @@
 
            <div class="collapse navbar-collapse" id="nav-principal">
              
-
+            <!--
               <form class="form-inline ml-auto">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-light my-2 my-sm-0 botao-buscar" name="buttonPesquisar" type="submit">
                 <i class="fas fa-search lupa-buscar"></i></button>
-              </form>
+              </form> -->
               <ul class="navbar-nav ml-auto">
 
                   <li class="nav-item">
